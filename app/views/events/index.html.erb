@@ -1,18 +1,17 @@
-<p style="color: green"><%= notice %></p>
-
-<div class="container">
-
-    <h1>Private Events</h1>
-  
-    <div id="events">
-      <% @events.each do |event| %>
-        <%= render event %>
-        <p>
-          <%= link_to "Show this event", event %>
-        </p>
-      <% end %>
+<div class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <h1 class="title">Private Events</h1>
+                <div id="events">
+                  <% @events.each do |event| %>
+                    <div class="content is-medium"> Event Title: <%= event.event_title %></div>
+                    <div class="content is-medium"> Event Date: <%= event.event_date %></div>
+                    <div class="content is-medium"> Event Location: <%= event.event_location %></div>
+                    <div class="content is-medium"> <%= link_to "Show this event", event %></div>
+                  <% end %>
+                </div>
+            </div>
+        </div>
     </div>
-  
-    <%= link_to "New event", new_event_path %>
-
 </div>
