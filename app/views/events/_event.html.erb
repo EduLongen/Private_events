@@ -1,23 +1,42 @@
-<div id="<%= dom_id event %>">
-  <p>
-    <strong>Event title:</strong>
-    <%= event.event_title %>
-    <h4> Posted by <%= link_to event.user.name, user_path(event.user) %></h4>
-  </p>
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <div id="<%= dom_id event %>">
 
-  <p>
-    <strong>Event description:</strong>
-    <%= event.event_description %>
-  </p>
+          <div class="card">
 
-  <p>
-    <strong>Event date:</strong>
-    <%= event.event_date %>
-  </p>
+            <div class="card-header">
+              <div class="card-header-title">
+                <div class="column is-half">
+                  <p class="is-size-4"> <%= event.event_title %> </p>
+                </div>
+                <div class="content column is-half has-text-right">
+                  <p> Posted by <%= link_to event.user.name, user_path(event.user) %></p>
+                </div>                  
+              </div>
+            </div>
 
-  <p>
-    <strong>Event location:</strong>
-    <%= event.event_location %>
-  </p>
+            <div class="card-content">
+              <div class="content">
+                <p class="is-size-5"> Event Description: </p> 
+                <p class="is-size-7"> <%= event.event_description %></p> 
+              </div>
+              <hr class="content-divider" >
+              <div class="content">
+                <p class="is-size-5"> Event Date: </p> 
+                <p class="is-size-6"> <%= event.event_date %></p> 
+              </div>
+              <hr class="content-divider" >
+              <div class="content">
+                <p class="is-size-5"> Event Location: </p> 
+                <p class="is-size-6"> <%= event.event_location %></p> 
+              </div>
+            </div>
+          </div>
 
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
