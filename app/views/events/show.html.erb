@@ -6,11 +6,30 @@
     <div class="column is-10">
       <div class="card-content">
         <div class="content">
-          <p class="is-size-6"> <%= link_to "Edit this event", edit_event_path(@event) %> | <%= link_to "Back to events", events_path %></p>
-        </div>     
-          <%= button_to "Destroy this event", @event, method: :delete, class: "button is-dark" %>
-      </div>
+
+          <% if @event.user == current_user %>
+            <div class="box is-size-5 has-background-primary-light"> You are hosting this event. </div>
+          <% elsif @event.attendees.include?(current_user) %>
+            <div class="box is-size-5 has-background-primary-light"> You are attending this event. </div> 
+          <% end %>
+
+          <% if current_user && @event.user != current_user && !@event.attendees.include?(current_user) %>
+            <%= button_to "Attend the event", create_attending_event_path(:user_id=>current_user.id, :id=>@event.id), method: :post, class: "button is-info" %>
+          <% end %>
+
+          <% if current_user && @event.user != current_user && @event.attendees.include?(current_user)%>
+            <%= button_to "Deregister from the event", destroy_attending_event_path(:user_id=>current_user.id, :id=>@event.id), class: "button is-info", method: :delete, data: { confirm: 'Are you sure?' }%>
+          <% end %>
+
+          <% if current_user && current_user == @event.user %>
+            <%= button_to "Destroy this event", @event, method: :delete, class: "button is-dark" %>
+          <% end %>
+
+          <% if current_user && current_user == @event.user %>
+            <p class="is-size-6"> <%= link_to "Edit this event", edit_event_path(@event) %> | <%= link_to "Back to events", events_path %></p>
+          <% end %> 
       
+      </div>
     </div>
   </div>
 </div>

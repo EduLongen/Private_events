@@ -1,0 +1,9 @@
+<h1>Event Details</h1>
+<h2>Event Date: <%= @event.event_date%></h2>
+<h2>Event Location: <%= @event.event_location %></h2>
+<% if !@event.attendees.include?(current_user) %>
+
+<% else %>
+    <h3>You have registered for the event.</h3>
+<% end %>
+<%= link_to "Go back to Events Index Page", events_path%>

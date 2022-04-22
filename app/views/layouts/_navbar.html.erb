@@ -19,6 +19,10 @@
 
       <%= link_to "New Event", new_event_path, class: "navbar-item" %>
 
+      <% if current_user %>
+      <%= link_to "Attended Events", show_attended_events_path(current_user.id), class: "navbar-item" %>
+      <% end %>
+
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           More

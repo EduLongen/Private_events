@@ -7,14 +7,14 @@
             <div class="card-header">
               <div class="card-header-title">
                 <div class="column">
-                  <p class="is-size-4"> Created Events by <%= @user.name %> </p>
+                  <p class="is-size-4"> You have registered for the following events </p>
                 </div>
               </div>
             </div>
 
             <div class="card-content">
               <div class="content">
-                <% @user.events.each do |event| %>
+                <% @attended_events.each do |event| %>
                   <p class="is-size-5"> Event title: <%= event.event_title %> </p>
                   <p class="is-size-5"> Event date: <%= event.event_date %> </p>
                   <p class="is-size-5"> Event location: <%= event.event_location %> </p>

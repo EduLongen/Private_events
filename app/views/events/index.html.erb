@@ -1,17 +1,43 @@
 <div class="section">
-    <div class="container">
-        <div class="columns is-centered">
-            <div class="column is-half">
-                <h1 class="title">Private Events</h1>
-                <div id="events">
-                  <% @events.each do |event| %>
-                    <div class="content is-medium"> Event Title: <%= event.event_title %></div>
-                    <div class="content is-medium"> Event Date: <%= event.event_date %></div>
-                    <div class="content is-medium"> Event Location: <%= event.event_location %></div>
-                    <div class="content is-medium"> <%= link_to "Show this event", event %></div>
-                  <% end %>
-                </div>
-            </div>
+  <div class="columns is-mobile">
+
+    <div class="column px-6">
+      <div class="card-header has-background-white-ter">
+        <div class="card-header-title">
+          <p class="is-size-4"> Future events </p>
         </div>
+      </div>
+      <div class="card-content">
+        <div class="content">
+          <% @events.future.each do |event| %>
+            <p class="is-size-5"> Event title: <%= event.event_title %> </p>
+            <p class="is-size-5"> Event date: <%= event.event_date %> </p>
+            <p class="is-size-5"> Event location: <%= event.event_location %> </p>
+            <p class="is-size-5"> <%= link_to "Show this event", event %> </p>
+            <hr class="content-divider" >
+          <% end %>
+        </div>
+      </div>
     </div>
+
+    <div class="column px-6">
+      <div class="card-header has-background-white-ter">
+        <div class="card-header-title">
+          <p class="is-size-4"> Past events </p>
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="content">
+          <% @events.past.each do |event| %>
+            <p class="is-size-5"> Event title: <%= event.event_title %> </p>
+            <p class="is-size-5"> Event date: <%= event.event_date %> </p>
+            <p class="is-size-5"> Event location: <%= event.event_location %> </p>
+            <p class="is-size-5"> <%= link_to "Show this event", event %> </p>
+            <hr class="content-divider" >
+          <% end %>
+        </div>
+      </div>
+    </div>   
+
+  </div>
 </div>
